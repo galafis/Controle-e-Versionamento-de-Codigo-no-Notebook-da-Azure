@@ -10,7 +10,7 @@
 
 ![Imagem Hero do Projeto](./hero_image_no_text.png)
 
-Este projeto, proposto pela **DIO** e feito por mim, demonstra como utilizar o Azure Databricks para versionamento e organização de notebooks em ambientes de dados. A proposta inclui a criação de clusters, importação de arquivos, execução de notebooks com auxílio de inteligência artificial, além da integração com Azure DevOps para controle de código e automação de esteiras de CI/CD. É apresentado o uso prático da IA integrada ao Databricks para geração de código em Python e Spark, facilitando a criação de notebooks interativos com filtros, sumarizações, visualizações e comentários explicativos. Também são exploradas boas práticas de organização, exportação e reaproveitamento de notebooks, bem como o uso de recursos do Microsoft Learn, que oferecem exercícios guiados e roteiros de aprendizado. A abordagem permite trabalhar de forma colaborativa, segura e com versionamento estruturado em ambientes de análise, engenharia de dados e machine learning dentro da plataforma Azure.
+Este projeto, proposto pela **DIO** e desenvolvido por mim, demonstra como utilizar o Azure Databricks para versionamento e organização de notebooks em ambientes de dados. A proposta inclui a criação de clusters, importação de arquivos, execução parametrizada de notebooks e integração com Azure DevOps para controle de código e automação de esteiras de CI/CD. São exploradas as funcionalidades nativas do Databricks para desenvolvimento em Python e Spark, facilitando a criação de notebooks interativos com filtros, sumarizações, visualizações e comentários explicativos. Também são abordadas boas práticas de organização, exportação e reaproveitamento de notebooks, bem como o uso de recursos do Microsoft Learn, que oferecem exercícios guiados e roteiros de aprendizado. A abordagem permite trabalhar de forma colaborativa, segura e com versionamento estruturado em ambientes de análise, engenharia de dados e machine learning dentro da plataforma Azure.
 
 ## Insights e Possibilidades
 
@@ -22,17 +22,14 @@ A integração do Azure Databricks com o Azure DevOps proporciona um fluxo de tr
 - Implantação contínua em ambientes de produção
 - Rastreabilidade de alterações e colaboração entre equipes
 
-### Uso de IA para Desenvolvimento
-A integração de IA no Databricks revoluciona o desenvolvimento de notebooks:
+### Funcionalidades de Desenvolvimento do Databricks
+O Databricks oferece um ambiente completo de desenvolvimento com autocompletar, execução célula a célula e integração nativa com Spark, acelerando a criação e validação de notebooks:
 
 ```python
-# Exemplo de uso de IA para gerar código Spark
-# Basta descrever o que você precisa em um comentário:
+# Exemplo de pipeline de processamento com PySpark no Databricks
+# Leitura de CSV, filtragem de nulos e cálculo de estatísticas básicas
+from pyspark.sql.functions import col, count, avg, min, max
 
-# Gerar código para ler dados CSV, filtrar registros com valores nulos e calcular estatísticas básicas
-from pyspark.sql.functions import col, count, when, isnan, avg, min, max
-
-# O código abaixo seria sugerido pela IA
 df = spark.read.format("csv").option("header", "true").load("/path/to/data.csv")
 df_filtered = df.filter(~col("column_name").isNull())
 df_stats = df_filtered.select(
@@ -208,27 +205,30 @@ O Microsoft Learn oferece recursos valiosos para aprofundar o conhecimento em Az
 
 ## Conclusão
 
-O Azure Databricks, quando combinado com práticas adequadas de versionamento e organização de código, proporciona um ambiente robusto e colaborativo para projetos de dados. A integração com Azure DevOps e o uso de IA para assistência no desenvolvimento elevam a produtividade e a qualidade dos notebooks, permitindo que equipes trabalhem de forma mais eficiente em projetos complexos de análise, engenharia de dados e machine learning.
+O Azure Databricks, quando combinado com práticas adequadas de versionamento e organização de código, proporciona um ambiente robusto e colaborativo para projetos de dados. A integração com Azure DevOps e o uso das funcionalidades nativas da plataforma elevam a produtividade e a qualidade dos notebooks, permitindo que equipes trabalhem de forma mais eficiente em projetos complexos de análise, engenharia de dados e machine learning.
 
 
-## 📋 Descrição
+## Fluxo de Trabalho
 
-Descreva aqui o conteúdo desta seção.
+O diagrama abaixo resume o ciclo completo de desenvolvimento e entrega de notebooks no Azure Databricks com integração DevOps:
 
+```mermaid
+flowchart LR
+    A[Configuracao\ndo Cluster] --> B[Desenvolvimento\ndo Notebook]
+    B --> C[Integracao\ncom Git]
+    C --> D[Azure DevOps\nCI/CD Pipeline]
+    D --> E[Implantacao\nem Producao]
 
-## 📦 Instalação
-
-Descreva aqui o conteúdo desta seção.
-
-
-## 💻 Uso
-
-Descreva aqui o conteúdo desta seção.
-
+    style A fill:#0078D4,color:#fff,stroke:#005a9e
+    style B fill:#0078D4,color:#fff,stroke:#005a9e
+    style C fill:#0078D4,color:#fff,stroke:#005a9e
+    style D fill:#FF8C00,color:#fff,stroke:#cc7000
+    style E fill:#107C10,color:#fff,stroke:#0a5a0a
+```
 
 ## 📄 Licença
 
-Descreva aqui o conteúdo desta seção.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` para mais informações.
 
 ---
 
@@ -244,7 +244,7 @@ Descreva aqui o conteúdo desta seção.
 
 ![Project Hero Image](./hero_image_no_text.png)
 
-This project, proposed by **DIO** and developed by me, demonstrates how to use Azure Databricks for versioning and organizing notebooks in data environments. The proposal includes creating clusters, importing files, executing notebooks with the help of artificial intelligence, and integrating with Azure DevOps for code control and CI/CD pipeline automation. It presents the practical use of AI integrated into Databricks for generating Python and Spark code, facilitating the creation of interactive notebooks with filters, summaries, visualizations, and explanatory comments. Best practices for organizing, exporting, and reusing notebooks are also explored, as well as the use of Microsoft Learn resources, which offer guided exercises and learning paths. The approach allows for collaborative, secure, and structured versioning in data analysis, data engineering, and machine learning environments within the Azure platform.
+This project, proposed by **DIO** and developed by me, demonstrates how to use Azure Databricks for versioning and organizing notebooks in data environments. The proposal includes creating clusters, importing files, executing parameterized notebooks, and integrating with Azure DevOps for code control and CI/CD pipeline automation. It explores the native capabilities of the Databricks platform for Python and Spark development, facilitating the creation of interactive notebooks with filters, summaries, visualizations, and explanatory comments. Best practices for organizing, exporting, and reusing notebooks are also covered, as well as the use of Microsoft Learn resources, which offer guided exercises and learning paths. The approach enables collaborative, secure, and structured versioning in data analysis, data engineering, and machine learning environments within the Azure platform.
 
 ## Insights and Possibilities
 
@@ -256,17 +256,14 @@ Azure Databricks integration with Azure DevOps provides a complete workflow for 
 - Continuous deployment in production environments
 - Traceability of changes and collaboration between teams
 
-### Using AI for Development
-AI integration in Databricks revolutionizes notebook development:
+### Databricks Development Features
+Databricks provides a full-featured development environment with autocomplete, cell-by-cell execution, and native Spark integration, accelerating the creation and validation of notebooks:
 
 ```python
-# Example of using AI to generate Spark code
-# Just describe what you need in a comment:
+# Example PySpark processing pipeline in Databricks
+# Read CSV data, filter null records, and calculate basic statistics
+from pyspark.sql.functions import col, count, avg, min, max
 
-# Generate code to read CSV data, filter records with null values, and calculate basic statistics
-from pyspark.sql.functions import col, count, when, isnan, avg, min, max
-
-# The code below would be suggested by AI
 df = spark.read.format("csv").option("header", "true").load("/path/to/data.csv")
 df_filtered = df.filter(~col("column_name").isNull())
 df_stats = df_filtered.select(
@@ -442,25 +439,28 @@ Microsoft Learn offers valuable resources to deepen knowledge in Azure Databrick
 
 ## Conclusion
 
-Azure Databricks, when combined with appropriate versioning and code organization practices, provides a robust and collaborative environment for data projects. Integration with Azure DevOps and the use of AI for development assistance enhance productivity and notebook quality, allowing teams to work more efficiently on complex data analysis, data engineering, and machine learning projects.
+Azure Databricks, when combined with appropriate versioning and code organization practices, provides a robust and collaborative environment for data projects. Integration with Azure DevOps and the use of the platform's native productivity features enhance productivity and notebook quality, allowing teams to work more efficiently on complex data analysis, data engineering, and machine learning projects.
 
 
-## 📋 Description
+## Workflow
 
-Describe the content of this section here.
+The diagram below summarizes the full development and delivery cycle for notebooks in Azure Databricks with DevOps integration:
 
+```mermaid
+flowchart LR
+    A[Cluster\nSetup] --> B[Notebook\nDevelopment]
+    B --> C[Git\nIntegration]
+    C --> D[Azure DevOps\nCI/CD Pipeline]
+    D --> E[Production\nDeployment]
 
-## 📦 Installation
-
-Describe the content of this section here.
-
-
-## 💻 Usage
-
-Describe the content of this section here.
-
+    style A fill:#0078D4,color:#fff,stroke:#005a9e
+    style B fill:#0078D4,color:#fff,stroke:#005a9e
+    style C fill:#0078D4,color:#fff,stroke:#005a9e
+    style D fill:#FF8C00,color:#fff,stroke:#cc7000
+    style E fill:#107C10,color:#fff,stroke:#0a5a0a
+```
 
 ## 📄 License
 
-Describe the content of this section here.
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
 
